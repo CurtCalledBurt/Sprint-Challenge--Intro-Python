@@ -1,6 +1,12 @@
 import unittest
 from comp import *
 
+# I just addes these two lines to make an "unused import" warning my linter was screaming at me
+# ---------------------------
+humans
+math.sqrt(2)
+# ---------------------------
+
 def compare_humans(inp, exp):
   if len(inp) != len(exp):
     return False
