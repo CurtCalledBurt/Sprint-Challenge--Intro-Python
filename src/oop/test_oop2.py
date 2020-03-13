@@ -1,6 +1,12 @@
 import unittest
 from oop2 import *
 
+# Silence "unused import" warnings
+# --------------------
+vehicle
+vehicles
+# --------------------
+
 class Oop2Tests(unittest.TestCase):
   def setUp(self):
     self.ground_vehicle = GroundVehicle()
