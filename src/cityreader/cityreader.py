@@ -73,15 +73,44 @@ for c in cities:
 # Tucson: (32.1558,-110.8777)
 # Salt Lake City: (40.7774,-111.9301)
 
-lat1, lon1 = input("Enter lat1, lon1: ")
-lat2, lon2 = input("Enter lat2, lon2: ")
+input_string = input("Enter lat1, lon1: ")
+latlon = input_string.split(sep=',')
+lat1 = float(latlon[0].strip())
+lon1 = float(latlon[1].strip())
+
+input_string = input("Enter lat2, lon2: ")
+latlon = input_string.split(sep=',')
+lat2 = float(latlon[0].strip())
+lon2 = float(latlon[1].strip())
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # within will hold the cities that fall within the specified region
+  # assuming lat1 != lat2 and lon1 != lon2 
   within = []
 
-  # TODO Ensure that the lat and lon valuse are all floats
+  # TODO Ensure that the lat and lon values are all floats
   # Go through each city and check to see if it falls within 
   # the specified coordinates.
 
+  leftlon = 0
+  rightlon = 0
+  botlat = 0
+  toplat = 0
+
+  if lon1 < lon2:
+    leftlon = lon1
+    rightlon = lon2
+  else:
+    leftlon = lon2
+    rightlon = lon1
+  if lat1 < lat2:
+    botlat = lat1
+    toplat = lat2
+  else:
+    botlat = lat2
+    toplat = lat1
+
+  for city in cities:
+    if (city.lon > leftlon and city.lon < rightlon) and (city.lat > botlat and city.lat < toplat):
+      within.append(city)
   return within
